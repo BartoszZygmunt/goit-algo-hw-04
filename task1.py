@@ -65,7 +65,7 @@ execution_times = {"Merge Sort": [], "Insertion Sort": [], "Timsort": []}
 
 print("Execution times for different data sizes: (be patient, it may take a while!)")
 for size in data_sizes:
-    print(f"Data size: {size} elements. Wait for the results...")
+    print(f"Data size: {size} elements. Wait for the results... ", end="")
     data = generate_data(size)
     merge_time = timeit.timeit(lambda: merge_sort_wrapper(data), number=10)
     insertion_time = timeit.timeit(lambda: insertion_sort_wrapper(data), number=10)
@@ -74,6 +74,7 @@ for size in data_sizes:
     execution_times["Merge Sort"].append(merge_time)
     execution_times["Insertion Sort"].append(insertion_time)
     execution_times["Timsort"].append(timsort_time)
+    print("Done!")
 
 # Display the results in a DataFrame
 df = pd.DataFrame(execution_times, index=data_sizes)
